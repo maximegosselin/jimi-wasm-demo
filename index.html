@@ -151,6 +151,13 @@
             <option value="sus4">sus4</option>
         </select>
     </div>
+    <div>
+        <label>Display</label>
+        <select x-model="dispIntervals">
+            <option value="false">notes</option>
+            <option value="true">intervals</option>
+        </select>
+    </div>
 </form>
 <span id="console" class="jimi"></span>
 <script>
@@ -163,6 +170,7 @@
         root: 'C',
         tuning: ['E', 'A', 'D', 'G', 'B', 'E'],
         pattern: 'chromatic',
+        dispIntervals: 'false',
         init() {
             this.go = new Go();
             WebAssembly.instantiateStreaming(fetch("jimi.wasm"), this.go.importObject)
@@ -177,6 +185,9 @@
                     this.$watch('pattern', () => {
                         this.run()
                     });
+                    this.$watch('dispIntervals', () => {
+                        this.run()
+                    });
                     this.run();
                 });
         },
@@ -185,11 +196,11 @@
                 return;
             }
             if (this.pattern === 'custom') {
-                this.pattern = window.prompt('Custom pattern\nEx: 1-3-5-7');
+                this.pattern = window.prompt('Custom pattern\nEx: R-M3-P5-m7');
             }
             WebAssembly.instantiate(this.wasmModule, this.go.importObject)
                 .then((instance) => {
-                    this.go.argv = ['jimi', `-t=${this.tuning.join('')}`, `-r=${this.root}`, `-p=${this.pattern}`];
+                    this.go.argv = ['jimi', `-t=${this.tuning.join('')}`, `-r=${this.root}`, `-p=${this.pattern}`, `-i=${this.dispIntervals}`];
                     this.go.run(instance);
                 });
         },
