@@ -79,9 +79,9 @@ const app = {
     },
     onFretboardRendered(html) {
         if (this.wasm.addToWorkspace) {
-            document.getElementById("workspace").innerHTML += html;
+            document.getElementById("workspace").innerHTML += '<div class="fretboard">' + html + '</div>';
         } else {
-            document.getElementById("console").innerHTML = html;
+            document.getElementById("fretboard").innerHTML = html;
         }
     },
 };

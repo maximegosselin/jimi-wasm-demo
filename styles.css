@@ -5,30 +5,40 @@
 }
 
 html {
-    background-color: black;
-    color: white;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 16px;
     height: 100%;
 }
 
 body {
+    background-color: black;
+    color: white;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
     height: 100%;
     margin: 0;
     padding: 1rem;
     text-align: center;
 }
 
+header {
+    align-items: center;
+    display: flex;
+    gap: 4rem;
+}
+
 h1 {
-    font-size: 4rem;
+    font-size: 2rem;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .controls {
+    align-items: center;
     display: flex;
     gap: 2rem;
-    justify-content: center;
+    margin: 0;
 }
 
 .controls div {
@@ -41,13 +51,14 @@ h1 {
     border: 0;
     border-radius: 1rem;
     cursor: pointer;
-    font-size: 1.25rem;
-    padding: 0.25rem;
+    font-size: 1rem;
+    padding: 0.25rem 0 0.25rem 0.25rem;
 }
 
 .controls label {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .controls button {
@@ -55,8 +66,9 @@ h1 {
     border: 0;
     border-radius: 1rem;
     cursor: pointer;
-    font-size: 1.25rem;
+    font-size: 1rem;
     padding: 0.25rem 0.5rem;
+    white-space: nowrap;
 }
 
 .strings {
@@ -65,11 +77,23 @@ h1 {
     gap: 0.25rem;
 }
 
-.jimi {
-    background-color: black;
+.fretboard {
     font-family: monospace;
-    font-size: 1.25em;
+    font-size: 1rem;
     overflow: auto;
     padding: 1rem;
     white-space: pre;
+}
+
+.workspace {
+    background-color: #111;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.workspace .fretboard {
+    font-size: 0.75rem;
 }
